@@ -2,9 +2,7 @@
 Make icons with a character or number for leaflet.js
 
 test-CICon.html: test version of CIcon's html file
-
-		 to show markers at clicked position with
-		 
+		 to show markers at clicked position with		 
 		 characters(Emoji is available)
 		 
 test-CIcon.js:   an example of CIcon
