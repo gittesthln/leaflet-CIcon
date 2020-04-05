@@ -54,7 +54,7 @@ L.Icon.CIcon = L.Icon.extend({
         let t = options.text;
         if(typeof t === "number") {
             t = (t<0)?(-t).toString():`&#x${t.toString(16)};`;
-        } else {
+        } else {console.log(t);
             switch(t.substr(0,2)){
 						case "&#":
 								break;

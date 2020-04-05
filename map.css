@@ -1,0 +1,18 @@
+#map{
+    width:600px;
+    height:600px;
+    margin:5px 10px 5px 10px;
+}
+body > div{
+    vertical-align:top;
+    display:inline-block;
+}
+.LatLng { 
+      font-size:20px;
+       padding:50px 5px 5px 5px;
+      margin:5px 5px 5px 5px;
+}
+#Lat,#Lng {
+   font-size:20px;
+   text-align:right;
+}
