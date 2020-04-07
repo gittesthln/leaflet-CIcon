@@ -11,15 +11,46 @@
   crossorigin=""></script>
 <script type="text/javascript" src="CIcon.js"></script>
 <script type="text/javascript" src="test-CIcon.js"></script>
-<link rel="stylesheet" type="text/css" href="map.css" /> 
+<style type="text/css">
+#map{
+    width:600px;
+    height:600px;
+    margin:5px 10px 5px 10px;
+}
+body > div{
+    vertical-align:top;
+    display:inline-block;
+}
+.LatLng { 
+      font-size:20px;
+       padding:50px 5px 5px 5px;
+      margin:5px 5px 5px 5px;
+}
+#Lat,#Lng {
+   font-size:20px;
+   text-align:right;
+	 width: 180px;
+}
+</style>
 </head>
 <body>
   <div id="map" ></div>
-  <div class="LatLng">
-    <form>
-      <div >Lat<input type="text" id="Lat" size="11"></input></div>
-      <div >Lon<input type="text" id="Lng" size="11"></input></div>
-    </form>
-  </div>
+	<div>
+		<div class="LatLng">
+			<table>
+				<tr><td>Lat</td><td id="Lat"> </td></tr>
+				<tr><td>Lng</td><td id="Lng"> </td></tr>
+				</table>
+		</div>
+		<div><img id="img"></img></div>
+		<div id="params">
+			<div id="type">
+			</div>
+		</div>
+	</div>
+	<div><div>Options of the latest CIcon
+		<p>Please copy the followig textareas and paste your applications for the icon options.</p></div>
+		<div><textarea id="result" cols="50" rows="18"></textarea></div>
+		</div>
 </body>
 </html> 
