@@ -43,3 +43,24 @@ The follwing
 
 |Option|Type|Default|Description|
 |------|----|-------|-----------|
+|className|String|"character-icon"|Class prefix to use for icon elements|
+|type|String|"pin"|Specify icon's shape|"pin","flag",and "balloon" are defined|
+
+Other options for CIcon depends on "type".
+
+#### options for type "pin"
+
+|Option|Type|Default|Description|
+|------|----|-------|-----------|
+
+#### options for type "flag"
+
+|Option|Type|Default|Description|
+|------|----|-------|-----------|
+
+#### options for type "balloon"
+
+|Option|Type|Default|Description|
+|------|----|-------|-----------|
+
+
