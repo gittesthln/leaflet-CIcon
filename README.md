@@ -1,13 +1,18 @@
 # leaflet-CIcon
-Make icons with a character or number for leaflet.js
+L.Icon.CIcon is simple and customizable marker icon using SVG image. We give a 3types of CIcon, pin, flag, and balloon. The first two types are made icon shape by SVG image.  the last one is intended to use Emoji character as icon's shape. All of them show a specified character or numbers over the icon shape.
 
-test-CICon.html: test version of CIcon's html file
-		 to show markers at clicked position with		 
-		 characters(Emoji is available)
-		 
-test-CIcon.js:   an example of CIcon
+## Requirements
+- Leaflet 0.7+(earlier versions may work, but the sample program uses tooltip which is not supported 0.7.x)
+- Browser support for SVG and ECMA2015(may be)
 
-map.css:	 css file for test-CIcon.html
+## Demo
 
-CIcon.js:	 definition of CIcon
+The follwing
+
+[Example]http:(//gittesthln.github.io/leaflet-cicon/test-CICon.html)
+
+## Usaage
+- Include the source file
+````xml
+<script type="text/javascript" src="CIcon.js"></script>
 
