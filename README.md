@@ -66,7 +66,7 @@ The shape is drawed by cubic Bezier curve.
 |font-color|String|"hsl(0,0%,0%)"|color of text|
 |font-size|Number|12| Size of text. Unit is px(does not add "px"!)|,
 |font-ypos|Number|1.8|Vertical position factor of text. Unit is the radius of the arc|
-|iconAnchor|String or L.point|"middle-bottom"| Icon's anchor point. (left|middle|right)-(top|middle|bottom) combination is available in string|
+|iconAnchor|String or L.point|"middle-bottom"| Icon's anchor point. (left\|middle\|right)-(top\|middle\|bottom) combination is available in string|
 
 
 #### options for type "flag"
