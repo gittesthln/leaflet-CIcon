@@ -21,7 +21,7 @@ L.Icon.CIcon = L.Icon.extend({
                 "stroke"        : "hsl(0,0%,0%)",
                 "stroke-width"  : 1,
                 "stroke-opacity": 1,
-                "text"          : "U+1f606",
+                "text"          : "U+1f604",
                 "font-color"    : "hsl(0,0%,0%)",
                 "font-size"     : 12,
 								"font-ypos"     : 1.8,
@@ -132,7 +132,8 @@ L.Icon.CIcon = L.Icon.extend({
         let d = `M${mgn} ${mH+mgn} l0 ${-mH} l${mW} 0 l0 ${mH*ratio} l${-mW} 0`; 
 				return this._makeSrc(
 						this._createSVG(w,h) + this._createPath(d) +
-						this._createText(mX,h, this.options.text, this.options['font-size']));
+						this._createText(mX,h*this.options['font-ypos'],
+														 this.options.text, this.options['font-size']));
 		},
 		createBalloon:function(){
         let h   = this.options.iconSize.y - 0;
