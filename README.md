@@ -9,10 +9,37 @@ L.Icon.CIcon is simple and customizable marker icon using SVG image. We give a 3
 
 The follwing
 
-[Example]http:(//gittesthln.github.io/leaflet-cicon/test-CICon.html)
+[Example]http:(//www.hilano.org/leaflet-CIcon/test-CIcon.html)
 
-## Usaage
+## Usage
 - Include the source file
 ````xml
 <script type="text/javascript" src="CIcon.js"></script>
+````
+- Use a marker with a CIcon(this sample displays all parameters)
+````js
+ L.marker(L.point([35.681,139.767]),
+     {icon:	L.icon.cIcon({
+         "type": "pin",
+         "iconSize": L.point([26,36]),
+         "fill": "hsl(0,100%,50%)",
+         "fill-opacity": 1,
+         "stroke": "hsl(0,0%,0%)",
+         "stroke-width": "1",
+         "stroke-opacity": 1,
+         "text": "U+1f604",
+         "font-color": "hsl(0,0%,0%)",
+         "font-size": 12,
+         "font-ypos": 1.8, 
+         "iconAnchor": "middle-bottom"
+       })
+     });
+````
 
+## Properties
+### L.Icon.CIcon
+
+*Unspecified Icon optios are set to default values
+
+|Option|Type|Default|Description|
+|------|----|-------|-----------|
