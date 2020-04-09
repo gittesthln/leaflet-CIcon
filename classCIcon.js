@@ -29,14 +29,10 @@ L.Icon.CIcon = L.Icon.extend({
 		//(https://unicode.org/emoji/charts/full-emoji-list.html)
 		//uses this method to show emoji's variations of vendors.
 		_makeSrc: function(svg){
-				svg = svg +'</svg>';
-				//if you want to check svg code, comment out the next line 
-				//and open the debuggin tools(F12 or cntl+shift+I in windows).
-				//You find it in console tab.
-				//				console.log(svg); 
+				console.log(svg);
         let el = document.createElement('img');
         el.src =
-						`data:image/svg+xml;charset=UTF-8;base64,${btoa(svg)}`;
+						`data:image/svg+xml;charset=UTF-8;base64,${btoa(svg +'</svg>')}`;
         return el;
 		},				
 		_createSVG: function(w,h){

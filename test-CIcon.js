@@ -38,13 +38,13 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             "iconAnchor"    : ["left","bottom"]
         },
 				"balloon":{
-						"iconSize"      : [28,42],
-						"b-text"        : '&#x1F388;',
-						"text"          : "",
-            "font-size"     : 12,
-						"font-xpos"     : 0.4,
-						"font-ypos"     : 0.75,
-						"iconAnchor"    : ["right", "bottom"]
+						"iconSize": [30,30],
+						"b-text": "&#x1F388;",
+						"text": "1",
+						"font-size": 12,
+						"font-xpos": 0.4,
+						"font-ypos": 0.7,
+						"iconAnchor": [26,30]
 				}
     };
 		let params = document.getElementById("params");
@@ -95,7 +95,6 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 				markerNo +=1;
 				let iconOpt = {};
 				let type = document.querySelector('input[type=radio]:checked').value;
-				iconOpt['type'] = type;
 				let trs = document.getElementById(`p-${type}`).
 						getElementsByTagName("tr");
 				Array.prototype.forEach.call(trs,(tr)=>{
@@ -154,7 +153,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 				});
 				document.getElementById("result").value = JSON.stringify(iconOpt, null,2);
 				let m = L.marker(e.latlng,
-												 {icon:	L.icon.cIcon(iconOpt),
+												 {icon:	L.icon.cIcon[type](iconOpt),
 													draggable:true
 												 }).addTo(map);
 				m.No = markerNo;

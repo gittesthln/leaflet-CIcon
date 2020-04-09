@@ -43,23 +43,23 @@ When clicked on the map, a marker is set and clickable at the position and displ
 ## Properties
 ### L.Icon.CIcon
 
-Unspecified Icon optios are set to default values
+Unspecified Icon optios are set to default values. You may not use this object usually.
 
 |Option|Type|Default|Description|
-|------|----|-------|-----------|
+|:------:|:----:|:-------:|-----------|
 |className|String|"character-icon"|Class prefix to use for icon elements|
 |type|String|"pin"|Specify icon's shape|"pin","flag",and "balloon" are defined|
 
-Other options for CIcon depends on "type".
+We define 3 subclass, pin, flag, and balloon.
 
-#### options for type "pin"
+#### options for L.icon.cIcon.pin
 
-Icon's image consists of arc and tangent lines from anchor point.
+Icon's image consists of an arc and tangent lines from anchor point.
 The radius of the arc is determined by the icon's width and stroke-width.
 The shape is drawed by cubic Bezier curve. 
 
 |Option|Type|Default|Description|
-|------|----|-------|-----------|
+|:------:|:----:|:-------:|-----------|
 |iconSize|L.point|L.point([26,36])|size of icon|
 |fill|String|"hsl(0,100%,50%)" (red)|fill color of icon's inner. Color description defined in SVG can be used(rgb(dd,dd,dd), color name,...|
 |fill-opacity|Number|1| Opacity of icon's inner|
@@ -73,12 +73,12 @@ The shape is drawed by cubic Bezier curve.
 |iconAnchor|String or L.point|"middle-bottom"| Icon's anchor point. (left\|middle\|right)-(top\|middle\|bottom) combination is available in string|
 
 
-#### options for type "flag"
+#### options for L.icon.cIcon.flag
 
 Icon image is rectangular flag.
 
 |Option|Type|Default|Description|
-|------|----|-------|-----------|
+|:------:|:----:|:-------:|-----------|
 |iconSize|L.point|L.point([26,36])|size of icon|
 |fill|String|"hsl(0,100%,50%)" (red)|fill color of icon's inner. Color description defined in SVG can be used(rgb(dd,dd,dd), color name,...|
 |fill-opacity|Number|1| Opacity of icon's inner|
@@ -91,12 +91,13 @@ Icon image is rectangular flag.
 |ratio|Number|0.6|Height ratio of flag. Unit is the height of icon.|
 |font-ypos|Number|0.45|Vertical position factor of text. Unit is the height of the arc|
 |iconAnchor|String or L.point|"middle-bottom"| Icon's anchor point. (left\|middle\|right)-(top\|middle\|bottom) combination is available in string|
-#### options for type "balloon"
+
+#### ## options for L.icon.cIcon.balloon
 
 A character is used for Icon image. Large shpape of Emoji is recommended.
 
 |Option|Type|Default|Description|
-|------|----|-------|-----------|
+|:------:|:----:|:-------:|-----------|
 |iconSize|L.point|L.point([28,42])|size of icon|
 |b-text|String or Number|'U+1F388'(balloon)|A character usedmicon's image. Unicode code point(number) can be specified. Size is automatically determinde by icon's width.|
 |text|String or Number|""|A character put on icon's image. Unicode code point(number) can be specified. Negative number is converted its absolute value.|
