@@ -3,7 +3,7 @@ L.Icon.CIcon is simple and customizable marker icon using SVG image. We give a 3
 
 ## Requirements
 - Leaflet 0.7+(earlier versions may work, but the sample program uses tooltip which is not supported 0.7.x)
-- Browser support for SVG and ECMA2015(may be)
+- Browser support for SVG and ECMA2015(may be)(We use *let* for to declare variables, template literal, *Object.keys* method
 
 ## Demo
 
@@ -12,7 +12,9 @@ See the follwing URL.
 [Example] (http://www.hilano.org/leaflet-CIcon/test-CIcon.html)
 
 This page enables to check what the parameters work.
-When clicked on the map, a marker is set and clickable at the position and displays its position and icon image appears in the right to the map. The polygon is also displayed and change its shape by dragging the markers. Object notation of the icon's options appears in the bottom of the page. You may copy it and paste it your application to use your application.
+ - When clicked on the map, a marker is set and draggable at the position and displays its position and icon image appears in the right to the map.
+ - The polygon is also displayed and change its shape by dragging the markers. This helps to check the anchor point correct or not.
+  - Object notation of the icon's options appears in the bottom of the page. You may copy it and paste it your application to use your application.
 
 
 ## Usage
@@ -24,20 +26,18 @@ When clicked on the map, a marker is set and clickable at the position and displ
 ````js
  L.marker(L.point([35.681,139.767]),
      {icon:	L.icon.cIcon({
-         "type": "pin",
-         "iconSize": L.point([26,36]),
-         "fill": "hsl(0,100%,50%)",
-         "fill-opacity": 1,
-         "stroke": "hsl(0,0%,0%)",
-         "stroke-width": "1",
-         "stroke-opacity": 1,
-         "text": "U+1f604",
-         "font-color": "hsl(0,0%,0%)",
-         "font-size": 12,
-         "font-ypos": 1.8, 
-         "iconAnchor": "middle-bottom"
-       })
-     });
+  "iconSize": L.point([26,36]),
+  "fill": "hsl(0,100%,50%)",
+  "fill-opacity": 1,
+  "stroke": "hsl(0,0%,0%)",
+  "stroke-width": "1",
+  "stroke-opacity": 1,
+  "text": "U+1f604",
+  "font-color": "hsl(0,0%,0%)",
+  "font-size": 12,
+  "font-ypos": 1.8,
+  "iconAnchor": "middle-bottom"
+}
 ````
 
 ## Properties
@@ -92,9 +92,9 @@ Icon image is rectangular flag.
 |font-ypos|Number|0.45|Vertical position factor of text. Unit is the height of the arc|
 |iconAnchor|String or L.point|"middle-bottom"| Icon's anchor point. (left\|middle\|right)-(top\|middle\|bottom) combination is available in string|
 
-#### ## options for L.icon.cIcon.balloon
+#### options for L.icon.cIcon.balloon
 
-A character is used for Icon image. Large shpape of Emoji is recommended.
+A character is used for Icon image. Large shape of Emoji is recommended.
 
 |Option|Type|Default|Description|
 |:------:|:----:|:-------:|-----------|
@@ -107,3 +107,63 @@ A character is used for Icon image. Large shpape of Emoji is recommended.
 |iconAnchor|String or L.point|"right-bottom"| Icon's anchor point. (left\|middle\|right)-(top\|middle\|bottom) combination is available in string|
 
 ## Methods
+
+There is no method in this class. If you want change the shape,
+there are two way.
+
+### define creatImage function
+If you read the source code of CIcon.js, you find that every subclass defines createImage property(method). In this function, we recommend several functions to ease SVG source.
+
+|function name| arguments|description|
+|:-----------:|:---------:|----------|
+|_makeSrc|none| Convert the icon image to html img element. The closing tag&lt;/svg&gt; is automatically is added in this function. You may not change this function.|
+|_createSVG|*w*,*h*|Create SVG header part and size(*w* is width, *h* is height.)|
+|_createPath|*d*|Create SVG path for background image. d is the attribute of path elemet to describe the image.|
+|_createText|*x*,*y*,*c*,*size*|Create a text element to show character *c* at (*x*, *y*) with font size *size*.
+
+The return value is like this:
+```JS
+this._makeSrc(
+			this._createSVG(w,h) + this._createPath(d) +
+			this._createText(x,y,c,size);
+```
+in type balloon, it calls _createText twice insted of not to call _createPath.
+
+#### example
+The following example changes createImage function.
+```JS
+L.icon.cIcon.pin(
+    {"text":"1",
+     iconSize:L.point([30,30]),
+     "fill": "hsl(180,100%,80%)",
+     "type":"pin",
+     "font-ypos": 0.6,
+     "ratio": 0.6,
+     "createImage": makePentagon
+      })
+```
+*makePentagon* is defined as follows:
+```JS
+function makePentagon(){
+    let h   = this.options.iconSize.y - 0;
+    let w   = this.options.iconSize.x - 0;
+    let wt  = this.options['stroke-width'] - 0;
+    let ratio  = this.options['ratio'] - 0;
+    let mgn = wt + 2;
+    let mW  = w - mgn, mH = h - mgn;
+    let mX = w/2, mY = (h-mgn)*ratio+mgn;
+    
+    let d = `M${mX} ${mH} ${mW} ${mY} ${mW} ${mgn} ${mgn} ${mgn} ${mgn} ${mY}`; 
+    let svg = 
+            this._createSVG(w,h) + this._createPath(d) +
+            this._createText(mX,h*this.options['font-ypos'],
+                             this.options.text, this.options['font-size']);
+    return this._makeSrc(svg);
+}
+```
+This examle produces the figure below.
+
+![sample](sample.svg "sample")
+### define new subclass
+If you want to change many default values of the icon,
+we recommend this approach. Reffer to the code in CIcon.js.

@@ -49,11 +49,11 @@ L.Icon.CIcon = L.Icon.extend({
             map((x)=>{return `${x}="${this.options[x]}"`}).join(" ") +
 						` d="${d}z"/>`;
 		},
-		_createText : function(mX , h, ch, fontSize) {
-        let text = this._toHTMLEntity(ch);
-				return `<text x="${mX}" y="${h}" ` +
+		_createText : function(x , y, c, size) {
+        let text = this._toHTMLEntity(c);
+				return `<text x="${x}" y="${y}" ` +
             'text-anchor="middle" dominant-baseline="alphabetic" '+
-            `font-size="${fontSize}px" ` +
+            `font-size="${size}px" ` +
             `fill="${this.options['font-color']}" >${text}</text>`;
 		},
     //change the UTF code point of the first character 
