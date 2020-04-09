@@ -127,7 +127,7 @@ The return value is like this:
 ```JS
 this._makeSrc(
 			this._createSVG(w,h) + this._createPath(d) +
-			this._createText(x,y,c,size);
+			this._createText(x,y,c,size));
 ```
 in type balloon, it calls _createText twice insted of not to call _createPath.
 
