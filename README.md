@@ -25,19 +25,21 @@ This page enables to check what the parameters work.
 - Use a marker with a CIcon(this sample displays all parameters)
 ````js
  L.marker(L.point([35.681,139.767]),
-     {icon:	L.icon.cIcon({
-  "iconSize": L.point([26,36]),
-  "fill": "hsl(0,100%,50%)",
-  "fill-opacity": 1,
-  "stroke": "hsl(0,0%,0%)",
-  "stroke-width": "1",
-  "stroke-opacity": 1,
-  "text": "U+1f604",
-  "font-color": "hsl(0,0%,0%)",
-  "font-size": 12,
-  "font-ypos": 1.8,
-  "iconAnchor": "middle-bottom"
-}
+     {icon:	L.icon.cIcon.pin({
+       "iconSize": L.point([26,36]),
+       "fill": "hsl(0,100%,50%)",
+       "fill-opacity": 1,
+       "stroke": "hsl(0,0%,0%)",
+       "stroke-width": "1",
+       "stroke-opacity": 1,
+       "text": "U+1f604",
+       "font-color": "hsl(0,0%,0%)",
+       "font-size": 12,
+       "font-ypos": 1.8,
+       "iconAnchor": "middle-bottom"
+     }),
+      draggable:true
+});
 ````
 
 ## Properties
