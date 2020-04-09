@@ -47,7 +47,7 @@ L.Icon.CIcon = L.Icon.extend({
 				return '<path ' +
             ["fill","stroke","stroke-width","fill-opacity","stroke-opacity"].
             map((x)=>{return `${x}="${this.options[x]}"`}).join(" ") +
-						` d="${d}z"/>`;
+						` d="${d}"/>`;
 		},
 		_createText : function(x , y, c, size) {
         let text = this._toHTMLEntity(c);
@@ -143,7 +143,7 @@ L.Icon.CIcon.pin = L.Icon.CIcon.extend({
         let rCBP4  = `${mX} ${mgn} `;
         let lCBP2  = `S ${(mX - r*cos)*t + (mX - mH*sin/cos)*s} ${rCBP2Y} `;
         let d = startP + rCBP1 + rCBP2 + rCBP3 + rCBP4 +
-                lCBP2 + (mX - r*cos) + " " + rCBP1Y ;
+                lCBP2 + (mX - r*cos) + " " + rCBP1Y +'z';
 				return this._makeSrc(
 						this._createSVG(w,h) + this._createPath(d) +
 						this._createText(mX,r*this.options['font-ypos'],
@@ -188,7 +188,7 @@ L.Icon.CIcon.flag = L.Icon.CIcon.extend({
         let mW  = w - 2*mgn, mH = h - 2*mgn;
 
         let mX = w/2;
-        let d = `M${mgn} ${mH+mgn} l0 ${-mH} l${mW} 0 l0 ${mH*ratio} l${-mW} 0`; 
+        let d = `M${mgn} ${mH+mgn} l0 ${-mH} l${mW} 0 l0 ${mH*ratio} l${-mW} 0z`; 
 				return this._makeSrc(
 						this._createSVG(w,h) + this._createPath(d) +
 						this._createText(mX,h*this.options['font-ypos'],

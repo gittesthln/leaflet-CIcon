@@ -155,7 +155,7 @@ function makePentagon(){
     let mW  = w - mgn, mH = h - mgn;
     let mX = w/2, mY = (h-mgn)*ratio+mgn;
     
-    let d = `M${mX} ${mH} ${mW} ${mY} ${mW} ${mgn} ${mgn} ${mgn} ${mgn} ${mY}`; 
+    let d = `M${mX} ${mH} ${mW} ${mY} ${mW} ${mgn} ${mgn} ${mgn} ${mgn} ${mY}z`; 
     let svg = 
             this._createSVG(w,h) + this._createPath(d) +
             this._createText(mX,h*this.options['font-ypos'],
