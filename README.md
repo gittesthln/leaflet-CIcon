@@ -179,3 +179,4 @@ The author express to Iatkin who developed leaflet-svgicon. His code helps for t
 # References
  - [W3C SVG Working Group](https://www.w3.org/Graphics/SVG/)
  - [leaflet-svgicon](https://github.com/iatkin/leaflet-svgicon)
+ - [Full Emoji List, v13.0](https://unicode.org/emoji/charts/full-emoji-list.html)
