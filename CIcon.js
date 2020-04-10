@@ -108,8 +108,8 @@ L.Icon.CIcon.pin = L.Icon.CIcon.extend({
                 "stroke-opacity": 1,
                 "text"          : "U+1f604",
                 "font-color"    : "hsl(0,0%,0%)",
-                "font-size"     : 12,
-                "font-ypos"     : 1.8,
+                "font-size"     : 16,
+                "font-ypos"     : 1.5,
                 "createImage"   : this.createPin,
                 "iconAnchor"    : "middle-bottom"
         });
@@ -121,34 +121,24 @@ L.Icon.CIcon.pin = L.Icon.CIcon.extend({
         this.options.iconAnchor = this._toAnchor(this.options.iconAnchor);
     },
     createPin: function(){
-        let h   = this.options.iconSize.y - 0;
-        let w   = this.options.iconSize.x - 0;
+        let H   = this.options.iconSize.y - 0;
+        let W   = this.options.iconSize.x - 0;
         let wt  = this.options['stroke-width'] - 0;
-        let mgn = wt + 2;
-        let mW  = w - 2*mgn, mH = h - 2*mgn;
+        let mgn = wt + 1;
+        let w  = W - 2*mgn, h = H - 2*mgn;
 
-        let r = mW/2, mX = w/2;
-        let startP = `M ${mX} ${mH + mgn} `;//start point (middle bottom)
-        let sin = r/(mH - r), cos = Math.sqrt(1 - sin*sin);
+        let r = w/2, x = W/2;
+        let startP = `M ${x} ${h + mgn} `;//start point (middle bottom)
+        let sin = r/(h - r), cos = Math.sqrt(1 - sin*sin);
         //the right point of tangent line and the circle
-        let rCBP1X = mX + r*cos, rCBP1Y = mX + r*sin;
-        let rCBP1  = ` ${rCBP1X} ${rCBP1Y} `;
-        let QBPX   = mX + mH*sin/cos, QBPY   = mgn;
-        let s = (4/(1+cos)-1)/3, t = 1 - s;
-        // make svg path by cubic bezier curves and lines
-        let rCBP2X = rCBP1X*t + QBPX*s;
-        let rCBP2Y = rCBP1Y*t + QBPY*s;
-        let rCBP2  = `C ${rCBP2X} ${rCBP2Y} `;
-        let rCBP3  = `${mX*t + QBPX*s} ${mgn} `;
-        let rCBP4  = `${mX} ${mgn} `;
-        let lCBP2  = `S ${(mX - r*cos)*t + (mX - mH*sin/cos)*s} ${rCBP2Y} `;
-        let d = startP + rCBP1 + rCBP2 + rCBP3 + rCBP4 +
-                lCBP2 + (mX - r*cos) + " " + rCBP1Y +'z';
-        return this._makeSrc(
-            this._createSVG(w,h) + this._createPath(d) +
-            this._createText(mX,r*this.options['font-ypos'],
-                             this.options.text,this.options['font-size'])
-        );
+				let PR = `${x + r*cos} ${x + r*sin} `;
+				let PL = `${x - r*cos} ${x + r*sin} `;
+				let d = startP + PR + `A ${r} ${r} 0 1 0 `+ PL +'z';
+        let svg =  this._createSVG(W,H) + this._createPath(d) +
+            this._createText(x,r*this.options['font-ypos'] + mgn,
+                             this.options.text,this.options['font-size']);
+//				console.log(svg);
+        return this._makeSrc(svg);
     }
 });
 
@@ -180,18 +170,18 @@ L.Icon.CIcon.flag = L.Icon.CIcon.extend({
         this.options.iconAnchor = this._toAnchor(this.options.iconAnchor);
     },
     createFlag: function(){
-        let h   = this.options.iconSize.y - 0;
-        let w   = this.options.iconSize.x - 0;
+        let H   = this.options.iconSize.y - 0;
+        let W   = this.options.iconSize.x - 0;
         let wt  = this.options['stroke-width'] - 0;
         let ratio  = this.options['ratio'] - 0;
-        let mgn = wt + 2;
-        let mW  = w - 2*mgn, mH = h - 2*mgn;
+        let mgn = wt + 1;
+        let w  = W - 2*mgn, h = H - 2*mgn;
 
-        let mX = w/2;
-        let d = `M${mgn} ${mH+mgn} l0 ${-mH} l${mW} 0 l0 ${mH*ratio} l${-mW} 0z`; 
+        let x = W/2;
+        let d = `M${mgn} ${h+mgn} l0 ${-h} l${w} 0 l0 ${h*ratio} l${-w} 0z`; 
         return this._makeSrc(
-            this._createSVG(w,h) + this._createPath(d) +
-            this._createText(mX,h*this.options['font-ypos'],
+            this._createSVG(W,H) + this._createPath(d) +
+            this._createText(x,h*this.options['font-ypos'] + mgn,
                              this.options.text, this.options['font-size']));
     }
 });
@@ -207,7 +197,8 @@ L.Icon.CIcon.balloon = L.Icon.CIcon.extend({
             "text": "1",
             "font-size": 12,
             "font-xpos": 0.4,
-            "font-ypos": 0.7,
+            "font-ypos": 0.5,
+            "createImage"   : this.createBalloon,
             "iconAnchor": [26,30]
         });
         //change parameters to given value(s).
@@ -218,19 +209,18 @@ L.Icon.CIcon.balloon = L.Icon.CIcon.extend({
         this.options.iconAnchor = this._toAnchor(this.options.iconAnchor);
     },
     createBalloon:function(){
-        let h   = this.options.iconSize.y - 0;
-        let w   = this.options.iconSize.x - 0;
-        let wt  = this.options['stroke-width'] - 0;
-        let xPos = w * this.options['font-xpos'];
-        let yPos = h * this.options['font-ypos'];
+        let H   = this.options.iconSize.y - 0;
+        let W   = this.options.iconSize.x - 0;
+        let xPos = W * this.options['font-xpos'];
+        let yPos = H * this.options['font-ypos'];
         let fontSize = this.options['font-size'];
-        let mgn = wt + 2;
-        let mW  = w - 2*mgn, mH = h - 2*mgn;
+        let mgn = 2;
+        let w  = W - 2*mgn, h = H - 2*mgn;
 
-        let mX = w/2;
+        let x = W/2;
         return this._makeSrc(
-            this._createSVG(w,h)+
-            this._createText(mX,h,this._toHTMLEntity(this.options['b-text']), w)+
+            this._createSVG(W,H)+
+            this._createText(x,h,this._toHTMLEntity(this.options['b-text']), w)+
             this._createText(xPos,yPos,this.options.text, fontSize));
     }
 });

@@ -70,8 +70,8 @@ The shape is drawed by cubic Bezier curve.
 |stroke-opacity|Number| 1|Opacity of icon's boundary|
 |text|String or Number|"U+1f606"(grinning face with smiling eyes)|A character put on icon's image. Unicode code point(number) can be specified. Negative number is converted its absolute value.|
 |font-color|String|"hsl(0,0%,0%)"|color of text|
-|font-size|Number|12| Size of text. Unit is px(does not add "px"!)|,
-|font-ypos|Number|1.8|Vertical position factor of text. Unit is the radius of the arc|
+|font-size|Number|16| Size of text. Unit is px(does not add "px"!)|,
+|font-ypos|Number|1.5|Vertical position factor of text. Unit is the radius of the arc|
 |iconAnchor|String or L.point|"middle-bottom"| Icon's anchor point. (left\|middle\|right)-(top\|middle\|bottom) combination is available in string|
 
 

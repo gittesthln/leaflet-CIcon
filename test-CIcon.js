@@ -19,8 +19,8 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             "stroke-opacity": 1,
             "text"          : "U+1f604",
             "font-color"    : "hsl(0,0%,0%)",
-            "font-size"     : 12,
-						"font-ypos"     : 1.8,
+            "font-size"     : 16,
+						"font-ypos"     : 1.5,
             "iconAnchor"    : ["middle","bottom"]
         },
         "flag":{
@@ -43,7 +43,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 						"text": "1",
 						"font-size": 12,
 						"font-xpos": 0.4,
-						"font-ypos": 0.7,
+						"font-ypos": 0.5,
 						"iconAnchor": [26,30]
 				}
     };

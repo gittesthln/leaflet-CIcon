@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" height="36px" width="26px">
+	<path fill="hsl(0,100%,50%)" stroke="hsl(0,0%,0%)"
+				stroke-width="1" fill-opacity="1" stroke-opacity="1"
+				d="M 13 33  21.660254037844386 18 10 10 0 1 0 4.3397459621556145 18z"/>
+	<text x="13" y="18" text-anchor="middle" dominant-baseline="alphabetic" font-size="12px" fill="hsl(0,0%,0%)" >&#x1f604;</text>
+				
+</svg>
