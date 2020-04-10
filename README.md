@@ -157,11 +157,10 @@ function makePentagon(){
     //  `M${x} ${h} ${w} ${y} ${w} ${m} ${m} ${m} ${m} ${y}`;
     // This make you recognize the points coordinates easily.
     let d = 'M'+[[x,h],[w,y],[w,m],[m,m],[m,y]].map((E)=>E.join(' ')).join(' '); 
-    let svg = 
-        this._createSVG(w,h) + this._createPath(d) +
-        this._createText(x,h*this.options['font-ypos'],
-                             this.options.text, this.options['font-size']);
-    console.log(svg);
+    let svg = this._createSVG(w,h) + this._createPath(d) +
+              this._createText(x,h*this.options['font-ypos'],
+                               this.options.text, this.options['font-size']);
+//    console.log(svg);
     return this._makeSrc(svg);
 }
 ```
