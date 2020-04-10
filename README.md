@@ -120,7 +120,7 @@ If you read the source code of CIcon.js, you find that every subclass defines cr
 |:-----------:|:---------:|----------|
 |_makeSrc|none| Convert the icon image to html img element. The closing tag&lt;/svg&gt; is automatically is added in this function. You may not change this function.|
 |_createSVG|*w*,*h*|Create SVG header part and size(*w* is width, *h* is height.)|
-|_createPath|*d*|Create SVG path for background image. d is the attribute of path elemet to describe the image.|
+|_createPath|*d*|Create SVG path for background image. *d* is the attribute of path elemet to describe the image.|
 |_createText|*x*,*y*,*c*,*size*|Create a text element to show character *c* at (*x*, *y*) with font size *size*.
 
 The return value is like this:
@@ -129,7 +129,7 @@ this._makeSrc(
 			this._createSVG(w,h) + this._createPath(d) +
 			this._createText(x,y,c,size));
 ```
-in type balloon, it calls _createText twice insted of not to call _createPath.
+In type balloon, it calls _createText twice insted of not to call _createPath.
 
 #### example
 The following example changes createImage function.
@@ -147,19 +147,23 @@ L.icon.cIcon.pin(
 *makePentagon* is defined as follows:
 ```JS
 function makePentagon(){
-    let h   = this.options.iconSize.y - 0;
-    let w   = this.options.iconSize.x - 0;
+    let H   = this.options.iconSize.y - 0;
+    let W   = this.options.iconSize.x - 0;
     let wt  = this.options['stroke-width'] - 0;
     let ratio  = this.options['ratio'] - 0;
-    let mgn = wt + 2;
-    let mW  = w - mgn, mH = h - mgn;
-    let mX = w/2, mY = (h-mgn)*ratio+mgn;
+    let m = wt + 2;
+    let w  = W - m, h = H - m;
+    let x = W/2, y = h*ratio+m;
     
-    let d = `M${mX} ${mH} ${mW} ${mY} ${mW} ${mgn} ${mgn} ${mgn} ${mgn} ${mY}z`; 
+    //The following expression produces
+    //  `M${x} ${h} ${w} ${y} ${w} ${m} ${m} ${m} ${m} ${y}`;
+    // This make you recognize the points coordinates easily.
+    let d = 'M'+[[x,h],[w,y],[w,m],[m,m],[m,y]].map((E)=>E.join(' ')).join(' '); 
     let svg = 
-            this._createSVG(w,h) + this._createPath(d) +
-            this._createText(mX,h*this.options['font-ypos'],
+        this._createSVG(w,h) + this._createPath(d) +
+        this._createText(x,h*this.options['font-ypos'],
                              this.options.text, this.options['font-size']);
+    console.log(svg);
     return this._makeSrc(svg);
 }
 ```
@@ -169,3 +173,9 @@ This examle produces the figure below.
 ### define new subclass
 If you want to change many default values of the icon,
 we recommend this approach. Reffer to the code in CIcon.js.
+
+# Acknowledgments
+The author express to Iatkin who developed leaflet-svgicon. His code helps for the author to write this progam.
+# References
+ - [W3C SVG Working Group](https://www.w3.org/Graphics/SVG/)
+ - [leaflet-svgicon](https://github.com/iatkin/leaflet-svgicon)
