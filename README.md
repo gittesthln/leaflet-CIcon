@@ -9,7 +9,7 @@ L.Icon.CIcon is simple and customizable marker icon using SVG image. We give a 3
 
 See the follwing URL.
 
-[Example] (http://www.hilano.org/leaflet-CIcon/test-CIcon.html)
+[Example] (https://gittesthln.github.io/test-CIcon.html)
 
 This page enables to check what the parameters work.
  - When clicked on the map, a marker is set and draggable at the position and displays its position and icon image appears in the right to the map.
